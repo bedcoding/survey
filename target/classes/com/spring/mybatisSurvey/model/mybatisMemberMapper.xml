@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.spring.mybatisSurvey.model.MybatisMemberMapper">
+
+	<select id="getAllMembers"
+		resultType="com.spring.mybatisSurvey.model.MybatisMember">
+		SELECT * FROM  surveyresult
+	</select>
+	
+	<select id="getAllMembers2"
+		resultType="com.spring.mybatisSurvey.model.Q">
+		SELECT * FROM  q
+	</select>
+	
+	<select id="getMember"
+		resultType="com.spring.mybatisSurvey.model.MybatisMember"
+		parameterType="com.spring.mybatisSurvey.model.MybatisMember">
+		SELECT * FROM  surveyresult 
+		WHERE answernum = #{answernum}
+	</select>
+
+	<insert id="insertMember"
+		parameterType="com.spring.mybatisSurvey.model.MybatisMember">
+		INSERT INTO  surveyresult
+		VALUES(null, #{answer}, #{question})
+	</insert>
+
+	<update id="updateMember"
+		parameterType="com.spring.mybatisSurvey.model.MybatisMember">
+		UPDATE  surveyresult 
+		SET answer=#{answer}, question=#{question}
+		WHERE answernum=#{answernum}
+	</update>
+
+	<delete id="deleteMember" parameterType="int">
+		DELETE FROM  surveyresult 
+		WHERE answernum = #{answernum}
+	</delete>
+</mapper>
