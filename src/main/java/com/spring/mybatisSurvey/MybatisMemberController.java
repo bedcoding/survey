@@ -100,5 +100,9 @@ public class MybatisMemberController {
 	public void list(Model model){
 		ArrayList<MybatisMember> mybatisMembers = (ArrayList<MybatisMember>)mybatisMemberService.getAllMembers();
 		model.addAttribute("mybatisMembers", mybatisMembers);
+		
+		// 결과 출력
+		ArrayList<MybatisMember> mybatisMembers3 = (ArrayList<MybatisMember>)mybatisMemberService.getAllMembers3();
+		model.addAttribute("mybatisMembers3", mybatisMembers3);
 	}
 }

@@ -13,6 +13,14 @@
 		SELECT * FROM  q
 	</select>
 	
+	<select id="getAllMembers3"
+		resultType="com.spring.mybatisSurvey.model.MybatisMember">
+		SELECT answer, COUNT(*) AS result
+		FROM surveyresult
+		GROUP BY answer
+		ORDER BY answer;
+	</select>
+	
 	<select id="getMember"
 		resultType="com.spring.mybatisSurvey.model.MybatisMember"
 		parameterType="com.spring.mybatisSurvey.model.MybatisMember">

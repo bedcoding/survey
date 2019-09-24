@@ -23,6 +23,11 @@ public class MybatisMemberMapperImpl implements MybatisMemberMapper{
 	}
 	
 	@Override
+	public List<MybatisMember> getAllMembers3() {
+		return sqlSession.selectList("getAllMembers3");
+	}
+	
+	@Override
 	public MybatisMember getMember(int answernum) {
 		return sqlSession.selectOne("getMember", answernum);
 	}

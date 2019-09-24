@@ -10,11 +10,25 @@
 <title> 리스트</title>
 </head>
 <body>
+
+
 <div align="center">
 <h2> 리스트</h2>
 <hr width="500"/>
-	<table border="1" width="80%" cellpadding="0" cellspacing="0">
 
+
+
+	<c:forEach var="mybatisMember3" items="${mybatisMembers3}">
+		<tr>
+			<td align="center">${mybatisMember3.answer}번</td>
+			<td align="center">총갯수: ${mybatisMember3.result}개</td>
+		</tr> <br>
+	</c:forEach>
+
+	
+	 
+
+	<table border="1" width="80%" cellpadding="0" cellspacing="0">
 		<tr>
 			<td align="center">번호</td>
 			<td align="center">내용</td>
@@ -22,22 +36,22 @@
 			<td align="center">메뉴</td>
 		</tr>
 		
-	<c:forEach var="mybatisMember" items="${mybatisMembers}">
-		<tr>
-			<td align="center">${mybatisMember.answernum}</td>
-			<td align="center">${mybatisMember.question}</td>
-			<td align="center">${mybatisMember.answer}</td>
-			<td align="center">
-			 <input type="button" 
-				onClick="location.href='${pageContext.request.contextPath}/modifyMember/${mybatisMember.answernum}'" 
-				value="수정"/>
-				 
-			 <input type="button" 
-			    onClick="location.href='${pageContext.request.contextPath}/delMember/${mybatisMember.answernum}'" 
-			    value="삭제"/>
-			</td>
-		</tr>
-	</c:forEach>
+		<c:forEach var="mybatisMember" items="${mybatisMembers}">
+			<tr>
+				<td align="center">${mybatisMember.answernum}</td>
+				<td align="center">${mybatisMember.question}</td>
+				<td align="center">${mybatisMember.answer}</td>
+				<td align="center">
+				 <input type="button" 
+					onClick="location.href='${pageContext.request.contextPath}/modifyMember/${mybatisMember.answernum}'" 
+					value="수정"/>
+	
+				 <input type="button" 
+				    onClick="location.href='${pageContext.request.contextPath}/delMember/${mybatisMember.answernum}'" 
+				    value="삭제"/>
+				</td>
+			</tr>
+		</c:forEach>
 	</table>
 </div>
 
