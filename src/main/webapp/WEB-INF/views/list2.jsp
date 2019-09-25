@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- 소수점 뒷자리 버리려고 사용 -->
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
@@ -12,24 +12,32 @@
 
 
 <!-- 부트스트랩 디자인 넣는용 -->
-<link
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<title> 관리자 페이지 </title>
+
+<title> 여론조작 페이지 </title>
 </head>
 <body>
+
+	<div
+		class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+		<h5 class="my-0 mr-md-auto font-weight-normal">설문조사</h5>
+		<nav class="my-2 my-md-0 mr-md-3">
+			<a class="p-2 text-dark" href="./inputForm"> 설문 </a> <a
+				class="p-2 text-dark" href="./list"> 통계 </a> <a
+				class="p-2 text-dark" href="./list2"> 여론조작 </a>
+		</nav>
+		<a class="btn btn-outline-primary" href="#">Sign up</a>
+	</div>	<br>
+
 	<div align="center">
-		<h2> 관리자 페이지 </h2>
+		<h2> 여론조작 페이지 </h2>
 		<hr width="500" />
 
 
-		<table class="table table-hover table-dark" border="1" width="80%"
-			cellpadding="0" cellspacing="0">
+		<table class="table table-hover table-dark" border="1">
 			<tr>
 				<td align="center">번호</td>
 				<td align="center">내용</td>
@@ -42,11 +50,15 @@
 					<td align="center">${mybatisMember.answernum}</td>
 					<td align="center">${mybatisMember.question}</td>
 					<td align="center">${mybatisMember.answer}</td>
-					<td align="center"><input type="button"
-						onClick="location.href='${pageContext.request.contextPath}/modifyMember/${mybatisMember.answernum}'"
-						value="수정" /> <input type="button"
-						onClick="location.href='${pageContext.request.contextPath}/delMember/${mybatisMember.answernum}'"
-						value="삭제" /></td>
+					<td align="center">
+						<input type="button"
+							   onClick="location.href='${pageContext.request.contextPath}/modifyMember/${mybatisMember.answernum}'"
+							   value="수정" /> 
+						
+						<input type="button" 
+							   onClick="location.href='${pageContext.request.contextPath}/delMember/${mybatisMember.answernum}'"
+							   value="삭제" />
+					</td>
 				</tr>
 			</c:forEach>
 		</table>
