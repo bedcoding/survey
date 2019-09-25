@@ -19,69 +19,41 @@
 
 
 
-<title> 리스트</title>
+<title> 통계 </title>
 </head>
 <body>
 
-
-
-
-
-
-
-
-
-
 <div align="center">
-<h2> 리스트</h2>
-<hr width="500"/>
+	<h2> 항목별 답변자 수 </h2>
+	<hr width="500"/>
 
-<c:set var="total" value="0" />
-<c:forEach var="mybatisMember3" items="${mybatisMembers3}">
-	<tr>
-		<td align="center">${mybatisMember3.answer}번: </td>
-		<td align="center">${mybatisMember3.result}</td>
-	</tr>
-	<br>
-	<c:set var="total" value="${total + mybatisMember3.result}" />
-</c:forEach>
-
-전체: <c:out value="${total}"/> <br><br>
-
-<c:forEach var="mybatisMember3" items="${mybatisMembers3}">
-	<tr>
-		<c:set var="percentage" value="${(mybatisMember3.result / total) }" />
-		<td align="center">${mybatisMember3.answer}번 통계: </td>
-		<%-- <td> <c:out value="${percentage}"/>% </td> --%>
-		<td> <fmt:formatNumber value="${percentage}" type="percent"/> </td>
-	</tr>
-	<br>
-</c:forEach>
-
-
-
-		<table class="table table-hover table-dark" border="1" width="80%" cellpadding="0" cellspacing="0">
-		<tr>
-			<td align="center">번호</td>
-			<td align="center">내용</td>
-			<td align="center">결과</td>
-			<td align="center">메뉴</td>
-		</tr>
-		
-		<c:forEach var="mybatisMember" items="${mybatisMembers}">
+	<table class="table table-hover table-dark" border="1" cellpadding="0" cellspacing="0">
+		<c:set var="total" value="0" />
+		<c:forEach var="mybatisMember3" items="${mybatisMembers3}">
 			<tr>
-				<td align="center">${mybatisMember.answernum}</td>
-				<td align="center">${mybatisMember.question}</td>
-				<td align="center">${mybatisMember.answer}</td>
-				<td align="center">
-				 <input type="button" 
-					onClick="location.href='${pageContext.request.contextPath}/modifyMember/${mybatisMember.answernum}'" 
-					value="수정"/>
-	
-				 <input type="button" 
-				    onClick="location.href='${pageContext.request.contextPath}/delMember/${mybatisMember.answernum}'" 
-				    value="삭제"/>
-				</td>
+				<td align="center"> ${mybatisMember3.answer}번 선택 </td>
+				<td align="center">${mybatisMember3.result}</td>
+			</tr>
+			
+			<c:set var="total" value="${total + mybatisMember3.result}" />		
+		</c:forEach>
+		
+		<tr> 
+			<td align="center"> 전체 인원 </td>
+			<td align="center"> <c:out value="${total}"/> </td>
+		</tr>
+	</table> <br><br>
+
+
+
+	<h2> 통계 </h2>
+	<hr width="500"/>
+	<table class="table table-hover table-dark" border="1" cellpadding="0" cellspacing="0">
+		<c:forEach var="mybatisMember3" items="${mybatisMembers3}">
+			<tr>
+				<c:set var="percentage" value="${(mybatisMember3.result / total) }" />
+				<td align="center">${mybatisMember3.answer}번 통계 </td>
+				<td align="center"> <fmt:formatNumber value="${percentage}" type="percent"/> </td>
 			</tr>
 		</c:forEach>
 	</table>

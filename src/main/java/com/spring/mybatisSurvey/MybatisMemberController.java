@@ -97,12 +97,16 @@ public class MybatisMemberController {
 	
 	
 	@RequestMapping("/list")
-	public void list(Model model){
-		ArrayList<MybatisMember> mybatisMembers = (ArrayList<MybatisMember>)mybatisMemberService.getAllMembers();
-		model.addAttribute("mybatisMembers", mybatisMembers);
-		
+	public void list(Model model) {
 		// 결과 출력
 		ArrayList<MybatisMember> mybatisMembers3 = (ArrayList<MybatisMember>)mybatisMemberService.getAllMembers3();
 		model.addAttribute("mybatisMembers3", mybatisMembers3);
+	}
+	
+	@RequestMapping("/list2")
+	public void list2(Model model) {
+		// 관리자 페이지 (CRUD 기능 중 UD부분 - 여론조작 가능 ㅇㅇ)
+		ArrayList<MybatisMember> mybatisMembers = (ArrayList<MybatisMember>)mybatisMemberService.getAllMembers();
+		model.addAttribute("mybatisMembers", mybatisMembers);
 	}
 }
