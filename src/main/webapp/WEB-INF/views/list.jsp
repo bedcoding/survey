@@ -21,7 +21,8 @@
 
 <title> 통계 </title>
 </head>
-<body>
+
+<body> <br><br>
 
 <div align="center">
 	<h2> 항목별 답변자 수 </h2>
@@ -31,16 +32,16 @@
 		<c:set var="total" value="0" />
 		<c:forEach var="mybatisMember3" items="${mybatisMembers3}">
 			<tr>
-				<td align="center"> ${mybatisMember3.answer}번 선택 </td>
-				<td align="center">${mybatisMember3.result}</td>
+				<td style="width:50%" align="center"> ${mybatisMember3.answer}번 선택 </td>
+				<td style="width:50%" align="center">${mybatisMember3.result}</td>
 			</tr>
 			
 			<c:set var="total" value="${total + mybatisMember3.result}" />		
 		</c:forEach>
 		
 		<tr> 
-			<td align="center"> 전체 인원 </td>
-			<td align="center"> <c:out value="${total}"/> </td>
+			<td style="width:50%" align="center"> 전체 인원 </td>
+			<td style="width:50%" align="center"> <c:out value="${total}"/> </td>
 		</tr>
 	</table> <br><br>
 
@@ -52,8 +53,8 @@
 		<c:forEach var="mybatisMember3" items="${mybatisMembers3}">
 			<tr>
 				<c:set var="percentage" value="${(mybatisMember3.result / total) }" />
-				<td align="center">${mybatisMember3.answer}번 통계 </td>
-				<td align="center"> <fmt:formatNumber value="${percentage}" type="percent"/> </td>
+				<td style="width:50%" align="center">${mybatisMember3.answer}번 통계 </td>
+				<td style="width:50%" align="center"> <fmt:formatNumber value="${percentage}" type="percent"/> </td>
 			</tr>
 		</c:forEach>
 	</table>
