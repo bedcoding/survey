@@ -34,6 +34,15 @@
 		$('#test').val(text);
 	}
 	</script>
+	
+	<script>
+		function div_OnOff(id1, id2) {
+			// 라디오 버튼 value 값 조건 비교
+			document.getElementById(id1).style.display = "none"; // 숨김
+			document.getElementById(id2).style.display = ""; // 숨김
+		}
+	</script>
+
 </head>
 
 
@@ -54,7 +63,6 @@
 			<tr> <td align="center" colspan="2"> 성별을 선택하시오 </td> </tr>
 			
 			<tr>
-				<!-- 아직 구현 안함 -->
 				<td align="center" style="width: 50%"><form:radiobutton path="gender" value="남자" checked="true"/> 남자 <br> </td> 
 				<td align="center" style="width: 50%"><form:radiobutton path="gender" value="여자"/> 여자 <br> </td>
 			</tr>
@@ -80,8 +88,11 @@
 				<td align="center"><form:radiobutton path="answer" value="2"/> 2. 아이유 <br> </td>
 			</tr>
 
-      	<br> <button type="submit" class="btn btn-outline-primary"> 제출하기 </button>
+		<br>
+      	<button id="con2" type="submit" class="btn btn-outline-danger" style="display:none"> 제출하기 </button>
     </form:form>
+    
+    <button id="con1" class="btn btn-outline-primary"  onclick="div_OnOff('con1', 'con2');"> 설문완료 </button>
 </div>
 </body>
 </html>
