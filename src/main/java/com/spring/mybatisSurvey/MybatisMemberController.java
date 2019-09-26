@@ -1,9 +1,7 @@
 package com.spring.mybatisSurvey;
 
 import java.util.ArrayList;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,26 +24,26 @@ public class MybatisMemberController {
 	public void insertMember(Model model){
 		model.addAttribute("mybatisMember", new MybatisMember());
 		
-		// Áú¹® ¸®½ºÆ® Ãâ·Â
+		// ì§ˆë¬¸ ë¦¬ìŠ¤íŠ¸ ì¶œë ¥
 		ArrayList<Q> mybatisMembers2 = (ArrayList<Q>)mybatisMemberService.getAllMembers2();
 		model.addAttribute("mybatisMembers2", mybatisMembers2);
-	}//insertMember()
+	} //insertMember()
 	
 	
 	@RequestMapping("/insertOk")
 	public String insertOk(@Valid MybatisMember mybatisMember, BindingResult result){		
 		if(result.hasErrors()){
-			System.out.println("»ğÀÔ ¿À·ù ¹ß»ı");
+			System.out.println("ì‚½ì… ì˜¤ë¥˜ ë°œìƒ");
 //			return "redirect:inputForm";
-			return "inputForm"; //forward ¹æ½Ä
+			return "inputForm"; //forward ë°©ì‹
 		} else {
-			// ¿¡·¯°¡ ¾øÀ¸¸é DB¿¡ ÀúÀå
+			// ì—ëŸ¬ê°€ ì—†ìœ¼ë©´ DBì— ì €ì¥
 			mybatisMemberService.insertMember(mybatisMember);
 			return "redirect:list";
 		}
-	}//insertOk()
+	} //insertOk()
 	
-	@RequestMapping("/modifyMember/{answernum}") //get¹æ½Ä ´ë½Å¿¡ ½ºÇÁ¸µ¿¡¼­ Áö¿øÇÏ´Â ¹æ½Ä »ç¿ë
+	@RequestMapping("/modifyMember/{answernum}")  // getë°©ì‹ ëŒ€ì‹ ì— ìŠ¤í”„ë§ì—ì„œ ì§€ì›í•˜ëŠ” ë°©ì‹ ì‚¬ìš©
 	public String modifyMember(@PathVariable int answernum, Model model){
 		model.addAttribute("mybatisMember", mybatisMemberService.getMember(answernum));
 		return "modifyForm";
@@ -55,13 +53,13 @@ public class MybatisMemberController {
 	public String modifyOk(@Valid MybatisMember mybatisMember, BindingResult result ){
 		
 		if(result.hasErrors()){
-			System.out.println("¼öÁ¤ ¿À·ù ¹ß»ı");
+			System.out.println("ìˆ˜ì • ì˜¤ë¥˜ ë°œìƒ");
 			return "modifyForm";
-		}else{
+		} else {
 			mybatisMemberService.updateMember(mybatisMember);
 			return "redirect:list";
 		}
-	}//modifyOk()
+	} //modifyOk()
 	
 	@RequestMapping("/delMember")
 	public void delMember(Model model){
@@ -72,40 +70,40 @@ public class MybatisMemberController {
 	public String delMember(@PathVariable int answernum, Model model){		
 //		model.addAttribute("mybatisMember", new MybatisMember());
 		
-		//id Á¸Àç ¿©ºÎ Ã¼Å©
-		if(mybatisMemberService.getMember(answernum) != null){ //id Á¸ÀçÇÏ´Â °æ¿ì			
+		// id ì¡´ì¬ ì—¬ë¶€ ì²´í¬
+		if(mybatisMemberService.getMember(answernum) != null){ //id ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½			
 			model.addAttribute("mybatisMember", mybatisMemberService.getMember(answernum));
 			return "delMember";
 			
-		} else { //id nullÀÎ °æ¿ì
+		} else { 
+			// id nullì¸ ê²½ìš°
 			return "delFail";
 		}
-
-	}//delMember
+	} //delMember
 	
 	
 	@RequestMapping("/deleteOk")
 	public String deleteOk(@Valid MybatisMember mybatisMember, BindingResult result){
 		if(result.hasErrors()){
-			System.out.println("»èÁ¦ ¿À·ù ¹ß»ı");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½");
 			return "delMember";
 		} else {
 			mybatisMemberService.deleteMember(mybatisMember.getAnswernum());
 			return "redirect:list";
-		}//if
-	}//deleteOk()
+		} //if
+	} //deleteOk()
 	
 	
 	@RequestMapping("/list")
 	public void list(Model model) {
-		// °á°ú Ãâ·Â
+		// ê²°ê³¼ ì¶œë ¥
 		ArrayList<MybatisMember> mybatisMembers3 = (ArrayList<MybatisMember>)mybatisMemberService.getAllMembers3();
 		model.addAttribute("mybatisMembers3", mybatisMembers3);
 	}
 	
 	@RequestMapping("/list2")
 	public void list2(Model model) {
-		// °ü¸®ÀÚ ÆäÀÌÁö (CRUD ±â´É Áß UDºÎºĞ - ¿©·ĞÁ¶ÀÛ °¡´É ¤·¤·)
+		// ì—¬ë¡ ì¡°ì‘ í˜ì´ì§€ (ìˆ˜ì •/ì‚­ì œ)
 		ArrayList<MybatisMember> mybatisMembers = (ArrayList<MybatisMember>)mybatisMemberService.getAllMembers();
 		model.addAttribute("mybatisMembers", mybatisMembers);
 	}

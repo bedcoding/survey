@@ -2,7 +2,7 @@ package com.spring.mybatisSurvey.model;
 
 import java.util.List;
 
-// DAO와 같은 역할
+// DAO
 public interface MybatisMemberMapper {
 	public List<MybatisMember> getAllMembers();
 	public List<Q> getAllMembers2();
