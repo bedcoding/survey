@@ -69,6 +69,30 @@
 				</tr>
 			</c:forEach>
 		</table>
+		<br>
+		<br>
+		
+
+		<h2> 성별 통계</h2>
+		<hr width="500" />
+		<table class="table table-hover table-dark" border="1">		
+			<c:forEach var="mybatisMember4" items="${mybatisMembers4}">
+				<c:set var="percentage2" value="${(mybatisMember4.result2 / total) }" />
+				<tr>
+					<td> 성별: ${mybatisMember4.gender} </td>
+					<td> 응답: ${mybatisMember4.answer} </td>
+					<td> 통계: <fmt:formatNumber value="${percentage2}" type="percent" /></td>
+				<tr>
+			</c:forEach>
+		</table>
+		
+				
+		<!-- 위에서 싹다 띄워보면 이런식으로 결과가 나온다 -->
+		<!-- 남자 | 응답1 | 통계 25% -->
+		<!-- 남자 | 응답2 | 통계 25% -->
+		<!-- 여자 | 응답1 | 통계 25% -->
+		<!-- 여자 | 응답2 | 통계 25% -->
+		
 	</div>
 </body>
 </html>

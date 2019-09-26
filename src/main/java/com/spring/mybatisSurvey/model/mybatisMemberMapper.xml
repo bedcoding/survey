@@ -21,6 +21,14 @@
 		ORDER BY answer;
 	</select>
 	
+	<select id="getAllMembers4"
+		resultType="com.spring.mybatisSurvey.model.MybatisMember">
+		SELECT gender, answer, COUNT(*) AS result2
+		FROM surveyresult
+		GROUP BY gender, answer
+		ORDER BY gender;
+	</select>
+	
 	<select id="getMember"
 		resultType="com.spring.mybatisSurvey.model.MybatisMember"
 		parameterType="com.spring.mybatisSurvey.model.MybatisMember">
@@ -31,7 +39,7 @@
 	<insert id="insertMember"
 		parameterType="com.spring.mybatisSurvey.model.MybatisMember">
 		INSERT INTO  surveyresult
-		VALUES(null, #{answer}, #{question})
+		VALUES(null, #{answer}, #{question}, #{gender})
 	</insert>
 
 	<update id="updateMember"

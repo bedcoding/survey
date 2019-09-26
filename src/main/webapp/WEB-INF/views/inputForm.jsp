@@ -55,8 +55,8 @@
 			
 			<tr>
 				<!-- 아직 구현 안함 -->
-				<td align="center" style="width: 50%"><form:radiobutton path="answer" value="1" checked="true"/> 남자 <br> </td> 
-				<td align="center" style="width: 50%"><form:radiobutton path="answer" value="2"/> 여자 <br> </td>
+				<td align="center" style="width: 50%"><form:radiobutton path="gender" value="남자" checked="true"/> 남자 <br> </td> 
+				<td align="center" style="width: 50%"><form:radiobutton path="gender" value="여자"/> 여자 <br> </td>
 			</tr>
 		</table>
       

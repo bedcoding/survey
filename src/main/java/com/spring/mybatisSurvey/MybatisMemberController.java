@@ -99,6 +99,10 @@ public class MybatisMemberController {
 		// 결과 출력
 		ArrayList<MybatisMember> mybatisMembers3 = (ArrayList<MybatisMember>)mybatisMemberService.getAllMembers3();
 		model.addAttribute("mybatisMembers3", mybatisMembers3);
+		
+		// 성별 결과 출력
+		ArrayList<MybatisMember> mybatisMembers4 = (ArrayList<MybatisMember>)mybatisMemberService.getAllMembers4();
+		model.addAttribute("mybatisMembers4", mybatisMembers4);
 	}
 	
 	@RequestMapping("/list2")
